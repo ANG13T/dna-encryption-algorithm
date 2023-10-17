@@ -1,0 +1,74 @@
+## Conceptual Understanding
+
+DNA (Deoxyribonucleic acid) is a two stranded genetic molecule consisting of 4 nucleic bases:
+- Adenine (A)
+- Thymine (T)
+- Cytosine (C)
+- Guanine (G)
+
+A - T
+
+C - G
+
+DNA mocules have the capacity to store, transmit, and process information by combining its chemical capabilities with classical crytography
+
+Encryption:
+plain text -> encryption algorithm (encryption key) -> cipher text
+
+Decryption:
+cipher text -> decryption algorithm (encryption key) -> plain text
+
+Advantages of DNA Encyrption:
+- parralelism (in vitro = test tube DNA)
+- massive storage capacity (1 gram = 1021 DNA bases = 108 TB)
+
+Types of crytosystems:
+1. symmetric (same key)
+2. asymmetric (differnt keys to encrypt and decrypt)
+
+## Cybersecurity Concepts
+
+Types of encryption attacks
+1. Cipher-text only attack (COA): tries to extract plaintext or key with access to cipher text
+2. Known plain-text attack (KPA): tries to extract secret keys and code books using plaintext and encrypted cipher text
+3. Chosen Plaintext Attack (CPA): tries to extract secret info by accessing random ciphertext and getting corresponding encrypted ciphertext
+4. Chosen Ciphertext Attack (CCA): access the cipher text and figure out the plaintext
+
+
+## Crypto Concepts
+
+### One Time Pads (OTP)
+
+Binary additive stream cipher (one bit of plaintext is encrypted at a time using XOR addition)
+
+Example Encryption:
+
+DNA:         0101 1110 0010
+Random Key:  1010 0111 0001
+Cipher Text: 1111 1001 0011
+
+Example Decryption:
+Cipher Text: 1111 1001 0011
+Key:         1010 0111 0001
+Plain Text:  0101 1110 0010
+
+### Psuedo Random Number Generators (PNRGs)
+
+### Basic Implementations of DNA Encryption
+1. DNA Subsitution using Randomly Generated Distinct Pad represented by DNA strands
+2. Bit-wise XOR with molecular computation
+
+#### Implementation A: DNA Substitution with Integrated One Time Padding
+
+1. Feed in binary input represented by DNA strands of n length split into fixed length segments
+2. Get a code book library full of long DNA pads including random mappings from plaintext to ciphertext
+3.
+
+
+### References
+DNA Storage = https://github.com/marcottelab/akhmetov-2016
+
+https://github.com/dna-engine/dna-engine
+
+### Sources
+https://arxiv.org/pdf/1904.05528.pdf
