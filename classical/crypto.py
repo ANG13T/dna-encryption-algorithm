@@ -7,24 +7,53 @@ def vernam_cipher_encrypt(plain, key):
         return
     plain = plain.upper()
     key = key.upper()
+    output = ""
 
-    for index in len(plain):
-        val_1 = str(bin(ALPHABET.index(plain[i])))
-        val_2 = str(bin(ALPHABET.index(key[i]))
-        xor = XOR(val_1, val_2)
+    for index in range(len(plain)):
+        val_1 = str(bin(ALPHABET.index(plain[index])))[2:]
+        val_2 = str(bin(ALPHABET.index(key[index])))[2:]
+        bin_length = len(val_2)
+        if len(val_1) > len(val_2):
+            bin_length = len(val_1)
+        val_1 = val_1.zfill(bin_length)
+        val_2 = val_2.zfill(bin_length)
+        xor = int(XOR(val_1, val_2), 2)
+        if xor >= 26:
+            xor -= 26
+        output += ALPHABET[xor]
+
+    print("CIPHER: " + output)
+
 
 def XOR(val_1, val_2):
     result = ""
-    for i in len(val_1):
+    for i in range(len(val_1)):
         v_1 = int(val_1[i])
         v_2 = int(val_2[i])
+        print("-", v_1, v_2)
         if (v_1 == v_2):
-            result.concat("0")
+            result += "0"
         else:
-            result.concat("1")
+            result += "1"
 
     return result
 
+def RXOR(val_1, val_2):
+    result = ""
+    print(val_1, val_2)
+    for i in range(len(val_1)):
+        v_1 = int(val_1[i])
+        v_2 = int(val_2[i])
+
+        if (v_1 == "0"):
+            result += val_2[i]
+        else:
+            if v_2 == "1":
+                result += "0"
+            else:
+                result += "1"
+
+    return result
 
 
 def vernam_cipher_decrypt(cipher, key):
@@ -32,10 +61,48 @@ def vernam_cipher_decrypt(cipher, key):
         print("Unable to conduct Vernam cipher! They must be same length!")
         return
 
-    plain = plain.upper()
+    cipher = cipher.upper()
     key = key.upper()
+    output = ""
 
-    f
+    for index in range(len(cipher)):
+        alpha_1 = ALPHABET.index(cipher[index])
+        alpha_2 = ALPHABET.index(key[index])
+        if alpha_1 < alpha_2:
+            alpha_1 += 26
+
+        val_1 = str(bin(alpha_1))[2:]
+        val_2 = str(bin(alpha_2))[2:]
+        print("values", val_1, val_2, cipher[index], key[index])
+
+        bin_length = len(val_2)
+        if len(val_1) > len(val_2):
+            bin_length = len(val_1)
+
+        val_1 = val_1.zfill(bin_length)
+        val_2 = val_2.zfill(bin_length)
+        print("values", val_1, val_2, cipher[index], key[index])
+
+        rxor = RXOR(val_1, val_2)
+
+        print(rxor)
+
+        # return
+        outcome = int(rxor, 2)
+        if outcome > 26:
+            outcome = outcome - 26
+        print(outcome)
+        output += ALPHABET[outcome]
+
+    print("Plain Text: " + output)
+
+def implement_dna_sequence():
+    # this function is used to impart the DNA sequence
+    return
+
+
+vernam_cipher_encrypt("OAK", "SON")
+vernam_cipher_decrypt("COH", "SON")
 
 
 """
@@ -47,12 +114,3 @@ Steps:
 ne Time Pad Algorithm
 5. Decryption is the reverse process of encryption
 """
-
-
-
-
-
-
-
-
-
