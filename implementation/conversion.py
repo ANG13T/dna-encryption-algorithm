@@ -5,9 +5,7 @@ Nucleotide_Bases = {
     "11": "T"
 }
 
-resultant = []
-
-def string_to_nuclotide_sequence(val):
+def string_to_nucleotide_sequence(val):
     binary_string = ""
     # create a sequence of bytes put into the encoding of UTF-8
     byte_string = bytearray(val, 'utf-8')
@@ -30,9 +28,8 @@ def string_to_nuclotide_sequence(val):
 
     return result_nucleotide_string
     
-
-text = input("Enter in text input:")
-print("Text Input: ", text)
-output = string_to_nuclotide_sequence(text)
-print("Nucleotide Representation: ", output)
-
+def test_string_to_nucleotide():
+    text = input("Enter in text input:")
+    print("Text Input: ", text)
+    output = string_to_nuclotide_sequence(text)
+    print("Nucleotide Representation: ", output)
