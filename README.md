@@ -49,4 +49,14 @@ Since 2^2 = 4 with the four possible states being
 10 -> C (Cytosine)
 11 -> T (Thymine)
 
+Plain text Message -> ACII Binary -> 2-bit binary encoding rule (base) -> Calculate frequencies of each base -> Human coding rule based on frequency (variable length code for each base) -> Convert the message into Mbin using variable length code  
 
+P (Plain text) -> M (DNA Bases) -> MBIN variable length code for each base
+
+# Core Components of an Encryption Algorithm
+1. Text Type Support
+2. Binary Coding Rule (2-Bit Binary Coding Rule)
+3. Encryption Type Specification
+4. Encryption Algorithm
+5. Data Hiding Algorithm
+6. Blind and Not Blind Specification

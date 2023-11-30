@@ -10,6 +10,7 @@ P (Plain text) -> M (DNA Bases) -> MBIN variable length code for each base
 """
 
 import conversion
+import huffman
 from collections import Counter
 
 text = "sample"
@@ -17,4 +18,5 @@ result_string = conversion.string_to_nucleotide_sequence(text)
 print(result_string)
 frequencies = Counter(result_string)
 print(frequencies)
+huffman.huffman_coding(frequencies)
 
