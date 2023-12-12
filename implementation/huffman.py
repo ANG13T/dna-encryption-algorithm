@@ -24,20 +24,20 @@ class Node:
         self.right = None
         self.data = data
 
-    def insert(self, data):
+    def insert(self, node):
         if self.data:
-            if data < self.data:
+            if node.data < self.data:
                 if self.left == None:
-                    self.left = Node(data)
+                    self.left = node
                 else:
-                    self.left.insert(data)
-            elif data > self.data:
+                    self.left.insert(node)
+            elif node.data > self.data:
                 if self.right == None:
-                    self.right = Node(data)
+                    self.right = Node(node)
                 else:
-                    self.right.insert(data)
+                    self.right.insert(node)
         else:
-            self.data = data
+            self.data = node.data
 
     def display(self):
         if self.left:
@@ -48,6 +48,34 @@ class Node:
 
 # Given Freq Dict -> Return Huffman Coding Table
 def huffman_coding(frequencies):
+    print(frequencies)
+    frequencies = list(frequencies.values())
+
+    # init base node
+    selected_node = None
+    fre = frequencies[3]
+    fre_2 = frequencies[2]
+    total = fre + fre_2
+    total_node = Node(total)
+    selected_node = total_node
+
+    for i in range(3,5):
+       combo = selected_node.data + frequencies[4 - i]
+       new_node = Node(combo)
+       new_node.insert(selected_node)
+       new_node.insert(Node(frequencies[4 - i]))
+       selected_node = new_node
+
+    print(selected_node.data)
+    
+    return
+
+    # construct binary tree
+    fre = frequencies[0] + frequencies[1]
+    print()
+
+    return
+    # TODO: repeat for each frequency
     freq_1 = frequencies[-1]
     freq_2 = frequencies[-2]
     freq_count = freq_1 + freq_2
@@ -58,5 +86,7 @@ def huffman_coding(frequencies):
     root.insert(freq_2)
 
     root.display()
+    print(freq_1, freq_2, freq_count)
+    print(root.data)
 
     

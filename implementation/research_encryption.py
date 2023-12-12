@@ -13,7 +13,7 @@ import conversion
 import huffman
 from collections import Counter
 
-text = "sample"
+text = "hello"
 result_string = conversion.string_to_nucleotide_sequence(text)
 print(result_string)
 frequencies = Counter(result_string)
