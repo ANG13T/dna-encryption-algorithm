@@ -1,8 +1,8 @@
 Nucleotide_Bases = {
     "00": "A",
-    "01": "G",
-    "10": "C",
-    "11": "T"
+    "01": "T",
+    "10": "G",
+    "11": "C"
 }
 
 def string_to_nucleotide_sequence(val):

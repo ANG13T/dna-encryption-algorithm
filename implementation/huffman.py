@@ -46,6 +46,28 @@ class Node:
         if self.right:
             self.right.display()
 
+
+def retrieve_binary_output(node, value, track):
+    tracker = track
+
+    if (node == None):
+        return None
+
+    if(node.data == value):
+        return node.data
+
+    # check right first 
+    res1 = retrieve_binary_output(node.right, value, tracker)
+
+    if res1:
+        tracker.append(1)
+        return tracker
+
+    res2 = retrieve_binary_output(node.left, value, tracker)
+    tracker.append(0)
+
+    return tracker
+
 # Given Freq Dict -> Return Huffman Coding Table
 def huffman_coding(frequencies):
     print(frequencies)
@@ -56,10 +78,12 @@ def huffman_coding(frequencies):
     selected_node = None
     fre = frequencies[3]
     fre_2 = frequencies[2]
+    print(fre_2, labels[2])
+    print(fre, labels[3])
     total = fre + fre_2
     total_node = Node(total)
-    total_node.insert(Node(fre_2, labels[2]))
     total_node.insert(Node(fre, labels[3]))
+    total_node.insert(Node(fre_2, labels[2]))
     selected_node = total_node
 
     # construct the tree
@@ -71,9 +95,20 @@ def huffman_coding(frequencies):
        selected_node = new_node
 
     # selected_node will be at the top of the tree
-    print(selected_node.data)
-    print(selected_node.right.data)
-    print(selected_node.left.data)
+    print(selected_node.data) # 20
+    print(selected_node.right.data) # 7
+    print(selected_node.right.label) # T
+    print(selected_node.left.data) # 13
+    new_node = selected_node.left # 13
+    print(new_node.left.data) # 7
+    print(new_node.right.data) # 6
+    print(new_node.right.label) # G
+    print(new_node.left.left.data) # 3
+    print(new_node.left.left.label) # A
+    print(new_node.left.right.data) # 4
+    print(new_node.left.right.label) # C
+
+    print(retrieve_binary_output(selected_node, "T", []))
 
     
     return
