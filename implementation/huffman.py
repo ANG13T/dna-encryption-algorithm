@@ -53,7 +53,7 @@ def retrieve_binary_output(node, value, track):
     if (node == None):
         return None
 
-    if(node.data == value):
+    if(node.label == value):
         return node.data
 
     # check right first 
@@ -63,10 +63,10 @@ def retrieve_binary_output(node, value, track):
         tracker.append(1)
         return tracker
 
-    res2 = retrieve_binary_output(node.left, value, tracker)
     tracker.append(0)
-
-    return tracker
+    res2 = retrieve_binary_output(node.left, value, tracker) 
+    
+    return res2 
 
 # Given Freq Dict -> Return Huffman Coding Table
 def huffman_coding(frequencies):
@@ -108,7 +108,7 @@ def huffman_coding(frequencies):
     print(new_node.left.right.data) # 4
     print(new_node.left.right.label) # C
 
-    print(retrieve_binary_output(selected_node, "T", []))
+    print(retrieve_binary_output(selected_node, "G", []))
 
     
     return
