@@ -59,7 +59,7 @@ def retrieve_binary_output(node, value, track):
     # check right first 
     res1 = retrieve_binary_output(node.right, value, tracker)
 
-    if res1:
+    if res1 != None:
         tracker.append(1)
         return tracker
 
@@ -97,22 +97,15 @@ def huffman_coding(frequencies):
        new_node.insert(selected_node)
        selected_node = new_node
 
-    # selected_node will be at the top of the tree
-    print(selected_node.data) # 20
-    print(selected_node.right.data) # 7
-    print(selected_node.right.label) # T
-    print(selected_node.left.data) # 13
-    new_node = selected_node.left # 13
-    print(new_node.left.data) # 7
-    print(new_node.right.data) # 6
-    print(new_node.right.label) # G
-    print(new_node.left.left.data) # 3
-    print(new_node.left.left.label) # A
-    print(new_node.left.right.data) # 4
-    print(new_node.left.right.label) # C
-
-    print(retrieve_binary_output(selected_node, "A", []))
-
+    huffman_codings = {
+            "A": bin_array_to_string(retrieve_binary_output(selected_node, "A", [])),
+            "T": bin_array_to_string(retrieve_binary_output(selected_node, "T", [])), 
+            "G": bin_array_to_string(retrieve_binary_output(selected_node, "G", [])), 
+            "C": bin_array_to_string(retrieve_binary_output(selected_node, "C", []))
+    }
     
-    return
+    return huffman_codings
 
+
+def bin_array_to_string(bin):
+    return "".join(map(str, bin))

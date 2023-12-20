@@ -18,5 +18,6 @@ result_string = conversion.string_to_nucleotide_sequence(text)
 print(result_string)
 frequencies = Counter(result_string)
 print(frequencies)
-huffman.huffman_coding(frequencies)
+huffman_codings = huffman.huffman_coding(frequencies)
+cipher = conversion.nucleotide_string_to_cipher(result_string, huffman_codings)
 

@@ -27,6 +27,15 @@ def string_to_nucleotide_sequence(val):
         result_nucleotide_string += Nucleotide_Bases.get(group)
 
     return result_nucleotide_string
+
+def nucleotide_string_to_cipher(nucleotide_sequence, huffman_codings):
+    final_output = ""
+    print(huffman_codings)
+    for char in nucleotide_sequence:
+        final_output += huffman_codings[char]
+    print(final_output)
+    return final_output
+
     
 def test_string_to_nucleotide():
     text = input("Enter in text input:")
